@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/data_mapping.dir/src/main.cpp.o CMakeFiles/data_mapping.dir/src/utils.cpp.o -o data_mapping 
