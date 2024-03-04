@@ -4,7 +4,7 @@ FFFA1 done
 FFFB2 done
 FFFC3 done
 TPS: 0	RPM: 0	Injection: 0
-TPS: 1000	RPM: 0	Injection: 8.28905e-317
+TPS: 1000	RPM: 0	Injection: 0
 TPS: 2000	RPM: 0	Injection: 0
 TPS: 3000	RPM: 0	Injection: 0
 TPS: 4000	RPM: 0	Injection: 0

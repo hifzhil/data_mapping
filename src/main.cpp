@@ -34,32 +34,32 @@ char buff[4];
 char buff_check[4];
 int a = 1;
 
-void decrypt_data (std::string data, ddf_bins bins, struct ddf_table *ddf_table);
+void decrypt_data (std::string data, struct ddf_table *ddf_table);
 void print_table_map(struct ddf_table *ddf_table);
 int find_table_size (std::string data, char pattern1[], char pattern2[]);
 int compare_2_char(char a[], char b[]);
 int main (int argc, char *argv[])
 {
-    // std::cout<<"size : "<<rxData.size()<<std::endl;
-    // cells = find_table_size(rxData, "FFFA", "FFFF");
-    // std::cout<<"cells : "<<cells<<std::endl;
-    //double cells_long = pow(cells,2);
+    std::cout<<"size : "<<rxData.size()<<std::endl;
+    cells = find_table_size(rxData, "FFFA", "FFFF");
+    std::cout<<"cells : "<<cells<<std::endl;
+    double cells_long = pow(cells,2);
     struct ddf_table parsed[225];
     for (int k = 0 ; k < 3; k++)
     {
-        decrypt_data(rxData, ROW_1, &ddf_table);
+        decrypt_data(rxData, &ddf_table);
         a++;
     }
     print_table_map(&ddf_table);
     return 0;
 }
 
-void decrypt_data (std::string data, ddf_bins bins, struct ddf_table *ddf_table)
+void decrypt_data (std::string data, struct ddf_table *ddf_table)
 {
     switch (a)
         {
         case 1:
-            for (int i = 0 ; i < 64; i++)
+            for (int i = 0 ; i < (cells+1)*4; i++)
             {
                 if(i<4)
                 {
@@ -72,9 +72,9 @@ void decrypt_data (std::string data, ddf_bins bins, struct ddf_table *ddf_table)
                     {
                         //std::cout<<"ur decimal : "<<utils::hex2dec(buff)<<std::endl;
                         //collumn input
-                        for(int j = 0; j < 10; j++)
+                        for(int j = 0; j < cells; j++)
                         {
-                            ddf_table[j*10 + throttle_index].throttle = utils::hex2dec(buff);
+                            ddf_table[j*cells + throttle_index].throttle = utils::hex2dec(buff);
                         }
                         index = 0;
                         throttle_index += 1;
@@ -89,7 +89,7 @@ void decrypt_data (std::string data, ddf_bins bins, struct ddf_table *ddf_table)
             break;
         
         case 2:
-            for (int i = ROW_1 ; i < 184; i++)
+            for (int i = ROW_1 ; i < ROW_1 + (cells + 1)*4; i++)
             {
                 if(i < 4 +ROW_1)
                 {
@@ -103,9 +103,9 @@ void decrypt_data (std::string data, ddf_bins bins, struct ddf_table *ddf_table)
                     {
                         //std::cout<<"ur decimal : "<<utils::hex2dec(buff)<<std::endl;
                         //collumn input
-                        for(int j = 0; j < 10; j++)
+                        for(int j = 0; j < cells; j++)
                         {
-                            ddf_table[rpm_index*10 + j].rpm = utils::hex2dec(buff);
+                            ddf_table[rpm_index*cells + j].rpm = utils::hex2dec(buff);
                         }
                         index = 0;
                         rpm_index += 1;
@@ -120,7 +120,7 @@ void decrypt_data (std::string data, ddf_bins bins, struct ddf_table *ddf_table)
             break;
 
         case 3:
-            for (int i = ROW_2 ; i < ROW_2 + 554 ; i++)
+            for (int i = ROW_2 ; i < ROW_2 + (pow(cells,2) + 1)*4 ; i++)
             {
                 if(i<4 + ROW_2)
                 {
@@ -154,7 +154,7 @@ void decrypt_data (std::string data, ddf_bins bins, struct ddf_table *ddf_table)
 
 void print_table_map(struct ddf_table *ddf_table)
 {
-    for (int i = 0; i < 225; i++)
+    for (int i = 0; i < pow(cells,2); i++)
     {
         std::cout<<"TPS: "<<ddf_table[i].throttle<<"\t"<<"RPM: "<<ddf_table[i].rpm<<"\t"<<"Injection: "<<ddf_table[i].injection<<std::endl;
     }                
