@@ -1,3 +1,0 @@
-/home/hifzhil/currentProject/data_mapping/build/CMakeFiles/data_mapping.dir
-/home/hifzhil/currentProject/data_mapping/build/CMakeFiles/edit_cache.dir
-/home/hifzhil/currentProject/data_mapping/build/CMakeFiles/rebuild_cache.dir
