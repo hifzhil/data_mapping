@@ -10,4 +10,5 @@ include_directories(
 add_executable(data_mapping 
     src/main.cpp
     src/utils.cpp
+    src/decrypt_data.cpp
 )

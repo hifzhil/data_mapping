@@ -129,6 +129,30 @@ data_mapping/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_mapping.dir/build.make CMakeFiles/data_mapping.dir/build
 .PHONY : data_mapping/fast
 
+src/decrypt_data.o: src/decrypt_data.cpp.o
+.PHONY : src/decrypt_data.o
+
+# target to build an object file
+src/decrypt_data.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_mapping.dir/build.make CMakeFiles/data_mapping.dir/src/decrypt_data.cpp.o
+.PHONY : src/decrypt_data.cpp.o
+
+src/decrypt_data.i: src/decrypt_data.cpp.i
+.PHONY : src/decrypt_data.i
+
+# target to preprocess a source file
+src/decrypt_data.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_mapping.dir/build.make CMakeFiles/data_mapping.dir/src/decrypt_data.cpp.i
+.PHONY : src/decrypt_data.cpp.i
+
+src/decrypt_data.s: src/decrypt_data.cpp.s
+.PHONY : src/decrypt_data.s
+
+# target to generate assembly for a file
+src/decrypt_data.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_mapping.dir/build.make CMakeFiles/data_mapping.dir/src/decrypt_data.cpp.s
+.PHONY : src/decrypt_data.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -186,6 +210,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... data_mapping"
+	@echo "... src/decrypt_data.o"
+	@echo "... src/decrypt_data.i"
+	@echo "... src/decrypt_data.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

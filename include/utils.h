@@ -9,8 +9,9 @@
 #pragma once
 
 namespace utils {
-    uint16_t hex2dec (std::string hexData);
-    uint16_t CharToDec(char c);
+    int hex2dec (std::string hexData);
+    int CharToDec(char c);
+    bool compare_2_char(char a[], char b[]);
 }  // namespace utils **/
 
 
